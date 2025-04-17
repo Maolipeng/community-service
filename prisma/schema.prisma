@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Weather {
+    id        Int      @id @default(autoincrement())
+    temp      Int
+    condition String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Notice {
+    id        Int      @id @default(autoincrement())
+    title     String
+    content   String
+    type      String // emergency, normal
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Activity {
+    id          Int      @id @default(autoincrement())
+    title       String
+    date        String
+    time        String
+    location    String
+    image       String
+    description String?
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
+model Announcement {
+    id        Int      @id @default(autoincrement())
+    title     String
+    content   String
+    time      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model PropertyService {
+    id          Int      @id @default(autoincrement())
+    title       String
+    description String
+    icon        String
+    type        String // repair, payment, delivery, consultation
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
+model LifeService {
+    id          Int      @id @default(autoincrement())
+    title       String
+    description String
+    icon        String
+    type        String // parking, shopping, health, housekeeping
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
+model CommunityService {
+    id          Int      @id @default(autoincrement())
+    title       String
+    description String
+    icon        String
+    type        String // groupBuy, secondHand, interest, phone
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
